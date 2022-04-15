@@ -1,0 +1,51 @@
+.pageperso{
+
+  padding-left: 15%;
+  padding-right: 15%;
+  .banniere{
+  width: 100%;
+  
+    img{
+        width: 100%;
+    }
+  }
+  .photoprofil{
+    height: 18vh;
+    width: 18vh;
+    border-radius: 15vh;
+    position: absolute;
+    left: 16%;
+    top:30%;
+
+    overflow: hidden;
+
+    img{
+      width: 105%;
+    }
+  }
+  .pseudo{
+    position: absolute;
+    left: 26%;
+    top:33%;
+    font-size: 2.5rem;
+  }
+  #addpicture{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 22%;
+    top:43%;
+    background-color: orangered;
+    color: white;
+    border-radius: 50%;
+    mat-icon{
+      position: absolute;
+      left:10%;
+      top:10%;
+    }
+    &:hover{
+      background-color: aliceblue;
+      color: orangered;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.ajouter{
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.filled{
+    color: orangered;
+
+}
+
+.notfilled{
+    color:#6e6a6a;
+    width: 100%;
+
+
+}
+#rating{
+    display: flex;
+    justify-content: space-around;
+}
+button{
+    border: none;
+    width: 100%;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover{
+        background-color: orangered;
+        color: white;
+        transition: 0.5s;
+    }
+}
+mat-form-field{
+    width: 100%;
+}

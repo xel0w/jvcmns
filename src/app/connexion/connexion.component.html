@@ -1,0 +1,36 @@
+<div class="connexion">
+  <img src="../../assets/img/logo.png" alt="logo jvcmns" />
+  <form [formGroup]="formulaireConnexion" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Pseudo</mat-label>
+        <input matInput placeholder="Pseudo" formControlName="pseudo" />
+
+
+        <mat-error
+          *ngIf="formulaireConnexion.get('pseudo')?.hasError('required')"
+        >
+          Champ Obligatoire</mat-error
+        >
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="motDePasse" />
+
+
+        <mat-error
+          *ngIf="formulaireConnexion.get('motDePasse')?.hasError('required')"
+        >
+          Champ Obligatoire</mat-error
+        >
+      </mat-form-field>
+    </p>
+    <p>
+      <button type="submit">Connexion</button>
+    </p>
+  </form>
+    <p>Pas de compte? <a [routerLink]="['/inscription']">Inscrivez vous</a></p> 
+</div>

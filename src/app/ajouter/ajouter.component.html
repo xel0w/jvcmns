@@ -1,0 +1,86 @@
+<div class="ajouter">
+  <form [formGroup]="formulaireArticle" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Titre du jeu</mat-label>
+        <input
+          matInput
+          placeholder="ex: Final fantasy 7"
+          formControlName="titre"
+        />
+
+        <mat-error
+          *ngIf="
+            formulaireArticle.get('titre')?.hasError('required') ||
+            formulaireArticle.get('titre')?.hasError('minlength')
+          "
+        >
+          Le champs doit comporter 5 caratceres</mat-error
+        >
+
+        <mat-error *ngIf="formulaireArticle.get('titre')?.hasError('pattern')">
+          Le champs ne doit contenir que des lettres
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Genre</mat-label>
+        <input matInput placeholder="ex: FPS" formControlName="genre" />
+        
+        <mat-error
+        *ngIf="
+        formulaireArticle.get('titre')?.hasError('required') ||
+        formulaireArticle.get('titre')?.hasError('minlength')
+        "
+        >
+        Le champs doit comporter 5 caratceres</mat-error
+        >
+        
+        <mat-error *ngIf="formulaireArticle.get('titre')?.hasError('pattern')">
+            Le champs ne doit contenir que des lettres
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="standard">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </p>
+    <br>
+    <div id="rating">
+      <ngb-rating
+        [max]="5"
+        [(rate)]="currentRate"
+        [readonly]="false"
+      >
+      <ng-template let-fill="fill" >
+        <div [class.filled]="fill === 100" [class.notfilled]="fill === 0">
+            <mat-icon>sports_esports</mat-icon>
+        </div>
+        
+      </ng-template>
+      
+    </ngb-rating>
+</div>
+<br>
+    <p>
+    <label for="singleFile">Image:</label><br>
+    <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+    <br>
+
+    <mat-file-upload-queue #fileUploadQueue
+    [fileAlias]="'file'"
+    [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">
+
+    <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+    </p>
+
+    <p>
+        <button type="submit">Ajouter</button>
+    </p>
+    
+  </form>
+</div>

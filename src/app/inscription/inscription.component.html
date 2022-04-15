@@ -1,0 +1,48 @@
+<div class="inscription">
+    <img src="../../assets/img/logo.png" alt="logo jvcmns" />
+    <form [formGroup]="formulaireInscription" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Pseudo</mat-label>
+          <input matInput placeholder="Pseudo" formControlName="pseudo" />
+  
+  
+          <mat-error
+            *ngIf="formulaireInscription.get('pseudo')?.hasError('required')"
+          >
+            Champ Obligatoire</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="mail" />
+  
+  
+          <mat-error
+            *ngIf="formulaireInscription.get('pseudo')?.hasError('required')"
+          >
+            Champ Obligatoire</mat-error
+          >
+        </mat-form-field>
+      </p>
+  
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="motDePasse" />
+  
+  
+          <mat-error
+            *ngIf="formulaireInscription.get('motDePasse')?.hasError('required')"
+          >
+            Champ Obligatoire</mat-error
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <button type="submit">S'inscrire</button>
+      </p>
+    </form>
+  </div>
