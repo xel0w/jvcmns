@@ -48,4 +48,41 @@
       color: orangered;
     }
   }
+  .option{
+    width: 98%;
+    display: flex;
+    justify-content: right;
+    #settings{
+      color: orangered;
+      border: none;
+      background:transparent;
+      &:hover{
+        color: aliceblue;
+      }
+      mat-icon{
+        font-size: xx-large;
+      }
+  }
+  
+}
+  .ajouter{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button{
+      min-width: 16%;
+      padding: 1%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-radius: 5px;
+      color: aliceblue;
+      background-color: orangered;
+      border: none;
+      &:hover{
+        color: orangered;
+        background-color: aliceblue;
+      }
+    }
+  }
 }

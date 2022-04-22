@@ -44,7 +44,7 @@ export class InscriptionComponent implements OnInit {
       };
       
       this.client
-      .post('http://localhost/php_jvcmns/inscription.php',this.formulaireInscription.value, optionRequete)
+      .post('http://php-jvcmns.test/inscription.php',this.formulaireInscription.value, optionRequete)
       .subscribe((resultat :any)=> {
         if(resultat.erreur){
           alert(resultat.erreur)
@@ -52,6 +52,7 @@ export class InscriptionComponent implements OnInit {
           console.log(resultat.ok);
           
           window.location.replace("/reussi");
+          console.log(this.formulaireInscription.value);
         }
         
     })

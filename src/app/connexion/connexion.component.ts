@@ -42,7 +42,7 @@ export class ConnexionComponent implements OnInit {
       };
       
       this.client
-      .post('http://localhost/php_jvcmns/connexion.php',this.formulaireConnexion.value, optionRequete)
+      .post('http://php-jvcmns.test/connexion.php',this.formulaireConnexion.value, optionRequete)
       .subscribe((resultat :any)=> {
         if(resultat.erreur){
           alert(resultat.erreur)

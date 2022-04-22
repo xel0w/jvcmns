@@ -2,17 +2,14 @@
   <header>
     <a [routerLink]="['/']"><img src="../assets/img/logo.png" id="logo"alt="logo jvcmns"></a>
     <div class="link">
+
       <a [routerLink]="['/']">Accueil</a>
       <a [routerLink]="['/liste']" >Liste</a>
+      
     </div>
-      <div class="profil">
-        <div class="profillink">
-      <div class="photoprofil">
-        <img *ngIf="token!=null && profilPicture" src="http://localhost/php_jvcmns/uploads/{{profilPicture}}.jpg">
-        <img *ngIf="token!=null && profilPicture==null" src="http://localhost/php_jvcmns/uploads/default.jpg">
-      </div>
+    <div class="profil">
+
       <a id="pseudo"*ngIf="token!=null"[routerLink]="['/page-perso']">{{pseudo}}</a>
-    </div>
       <a *ngIf="token==null" class="login"[routerLink]="['/connexion']"><mat-icon>login</mat-icon></a>
       <a *ngIf="token!=null" class="login"[routerLink]="['/deconnexion']"><mat-icon>logout</mat-icon></a>
       

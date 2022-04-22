@@ -1,38 +1,66 @@
 <div class="pageperso">
-    <header>
-        <div class="banniere">
-            <img src="../../assets/img/header.png" alt="">
-        </div>
-        <div class="photoprofil">
-            <img *ngIf="profilPicture" src="http://localhost/php_jvcmns/uploads/{{profilPicture}}.jpg">
-            <img *ngIf="profilPicture==null" src="http://localhost/php_jvcmns/uploads/default.jpg">
-            
-        </div>
-        <div class="pseudo">
-            {{pseudo}}
-        </div>
-        <ng-template #content let-modal>
-            <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Photo de profil</h4>
-              <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  <header>
+    <div class="banniere">
+      <img src="../../assets/img/header.png" alt="" />
+    </div>
+    <div class="photoprofil">
+      <img
+        *ngIf="profilPicture"
+        src="http://php-jvcmns.test/uploads/{{ profilPicture }}.jpg"
+      />
+      <img
+        *ngIf="profilPicture == null"
+        src="http://php-jvcmns.test/uploads/default.jpg"
+      />
+    </div>
+    <div class="pseudo">
+      {{ pseudo }}
+    </div>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Photo de profil</h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formulaireEnvoi" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <div class="input-group">
+              <input
+                id="profil"
+                type="file"
+                (change)="onSelectedFile($event)"
+              />
             </div>
-            <div class="modal-body">
-                <form [formGroup]="formulaireEnvoi"(ngSubmit)="onSubmit()">
-                <div class="mb-3">
-                  <div class="input-group">
-                    <input id="profil" type="file">
-                    <button type="submit"></button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-            </div>
-          </ng-template>
-          
-          <button class="btn" (click)="open(content)" id="addpicture"><mat-icon>photo_camera</mat-icon></button>
-          
-          
-    </header>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+
+    <button class="btn" (click)="open(content)" id="addpicture">
+      <mat-icon>photo_camera</mat-icon>
+    </button>
+  </header>
+  <div class="option">
+    <button mat-button id="settings"><mat-icon> settings </mat-icon></button>
+  </div>
+  <div class="ajouter">
+    <button [routerLink]="['/ajouter']" mat-fab color="primary">
+      <mat-icon>sports_esports</mat-icon><span>Ajouter un jeu</span><mat-icon>sports_esports</mat-icon>
+    </button>
+  </div>
 </div>
