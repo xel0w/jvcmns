@@ -22,6 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { ReussiComponent } from './reussi/reussi.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { ReussiComponent } from './reussi/reussi.component';
     MatInputModule,
     NgbModule,
     MatFileUploadModule,
+    MatCardModule,
+    MatSelectModule
     
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],

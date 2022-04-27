@@ -1,0 +1,95 @@
+.listeCard {
+  width: 100%;
+  margin-top: 1%;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+  background-image: linear-gradient(
+    to right bottom,
+    #b9b9b9,
+    #c8c7ca,
+    #d8d5db,
+    #e9e4ec,
+    #fbf2fd
+  );
+
+  .example-card {
+    width: 12vw;
+    padding: 1%;
+    margin: 2%;
+    border: solid 2px orangered;
+    background-color: antiquewhite;
+  }
+  .image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 95%;
+      border: solid 4px orangered;
+      padding: 0%;
+    }
+  }
+
+  .example-header-image {
+    background-size: cover;
+  }
+  .filled {
+    color: orangered;
+  }
+
+  .notfilled {
+    color: #6e6a6a;
+    width: 100%;
+  }
+  #rating {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.head {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  .formulaire {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      mat-icon {
+        color: orangered;
+      }
+      input {
+        border-color: orangered;
+        border-radius: 5px;
+      }
+      .searchbar {
+        margin: 2%;
+        width: 30vw;
+      }
+      select{
+        border: 1px solid orangered;
+        border-radius: 5px;
+        color: aliceblue;
+        background-color: orangered;
+      }
+      .cherche {
+        color: orangered;
+        border: none;
+        background: transparent;
+        &:hover {
+          color: aliceblue;
+        }
+        mat-icon {
+          font-size: xx-large;
+        }
+      }
+    }
+  }
+}
