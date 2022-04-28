@@ -1,0 +1,59 @@
+<div class="reglages">
+  <header>
+    <div class="banniere">
+      <img src="../../assets/img/header.png" alt="" />
+    </div>
+  </header>
+  <div class="formulaires">
+    <div class="entete">
+      <div class="titre">
+        <h2>Infomation personelles :</h2>
+      </div>
+      <div class="info">
+        <p>Pseudo : {{ pseudo }}</p>
+        <p>Mail : {{ email }}</p>
+      </div>
+    </div>
+    <div class="bigform">
+    <div class="form">
+      <form
+        class="changePseudo"
+        [formGroup]="formulairePseudo"
+        (ngSubmit)="onSubmitPseudo()"
+      >
+        <label>Changer de Pseudo: </label>
+        <div class="soumettre">
+          <input type="text" formControlName="pseudo" placeholder="{{pseudo}}"/>
+          <button type="submit">Modifier</button>
+        </div>
+      </form>
+
+      <form
+        class="changeMdp"
+        [formGroup]="formulaireMdp"
+        (ngSubmit)="onSubmitMdp()"
+      >
+        <label>Changer de Mot de passe: </label>
+        <div class="soumettre">
+          <input type="password" formControlName="mdp" />
+          <button type="submit">Modifier</button>
+        </div>
+      </form>
+
+      <form
+        class="changeMail"
+        [formGroup]="formulaireMail"
+        (ngSubmit)="onSubmitMail()"
+      >
+        <label>Changer de Mail: </label>
+        <div class="soumettre">
+          <input type="mail" formControlName="mail" placeholder="{{email}}"/>
+          <button type="submit">Modifier</button>
+        </div>
+      </form>
+    </div>
+    <img src="../../assets/img/nordvpn.png" alt="nordvpn">
+    </div>  
+  </div>
+
+</div>

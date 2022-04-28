@@ -9,6 +9,7 @@ import { AjouterComponent } from './ajouter/ajouter.component';
 import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { ReussiComponent } from './reussi/reussi.component';
 import { PagePersoComponent } from './page-perso/page-perso.component';
+import { ReglagesComponent } from './reglages/reglages.component';
 
 const routes: Routes = [
   {path:'',component: AccueilComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'deconnexion',component: DeconnexionComponent},
   {path:'reussi',component: ReussiComponent},
   {path:'page-perso',component: PagePersoComponent},
+  {path:'reglages',component: ReglagesComponent},
   {path:'**',component: Page404Component}
 ];
 

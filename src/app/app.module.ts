@@ -24,6 +24,7 @@ import { DeconnexionComponent } from './deconnexion/deconnexion.component';
 import { ReussiComponent } from './reussi/reussi.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import { ReglagesComponent } from './reglages/reglages.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {MatSelectModule} from '@angular/material/select';
     PagePersoComponent,
     Page404Component,
     DeconnexionComponent,
-    ReussiComponent
+    ReussiComponent,
+    ReglagesComponent
   ],
   imports: [
     BrowserModule,

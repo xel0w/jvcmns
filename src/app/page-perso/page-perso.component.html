@@ -56,7 +56,7 @@
     </button>
   </header>
   <div class="option">
-    <button mat-button id="settings"><mat-icon> settings </mat-icon></button>
+    <a [routerLink]="['/reglages']" ><button mat-button id="settings"><mat-icon> settings </mat-icon></button></a>
   </div>
   <div class="ajouter">
     <button [routerLink]="['/ajouter']" mat-fab color="primary">

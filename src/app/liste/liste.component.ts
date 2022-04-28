@@ -50,10 +50,6 @@ export class ListeComponent implements OnInit {
 
   }
   onSubmit(): void{
-    // this.client.post("http://php-jvcmns.test/recherche.php",
-    // this.formulaireRecherche.value)
-    // .subscribe(resultat => this.listeSearch=resultat);
-    // console.log(this.listeSearch);
     this.listeSearch = this.liste.filter((a: { jeuxTitre: any; })=>a.jeuxTitre.toLocaleLowerCase().includes(this.formulaireRecherche.value.recherche))
     
   }
@@ -61,13 +57,9 @@ export class ListeComponent implements OnInit {
     console.log(this.formulaireTri.value.triage);
     
     if (this.formulaireTri.value.triage === "jeuxTitre"){
-      // this.client.get("http://php-jvcmns.test/listeJeux.php")
-      // .subscribe(listeJeux => this.listeSearch = listeJeux) 
       this.listeSearch = this.liste.sort((a:any,b:any)=>(a.jeuxTitre > b.jeuxTitre) ? 1 : ((b.jeuxTitre > a.jeuxTitre) ? -1 : 0))
     }
     if(this.formulaireTri.value.triage === "jeuxNote"){      
-      // this.client.get("http://php-jvcmns.test/tri.php")
-      // .subscribe(listeJeux => this.listeSearch = listeJeux) 
       this.listeSearch = this.liste.sort((a: { jeuxNote: number; },b: { jeuxNote: number; })=>b.jeuxNote - a.jeuxNote)     
     }
     else{
