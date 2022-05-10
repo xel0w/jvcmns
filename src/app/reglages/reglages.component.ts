@@ -29,7 +29,7 @@ export class ReglagesComponent implements OnInit {
     const token = this.token;
     if(token!=null){
       const utilisateur = JSON.parse(atob(token.split('.')[1]));
-      this.pseudo = utilisateur.usersPseudo;
+      this.pseudo = utilisateur.usersPseudo[0].toUpperCase()+utilisateur.usersPseudo.slice(1);
       this.id = utilisateur.usersId;
       this.email = utilisateur.usersMail;
       this.formulairePseudo = this.formBuilder.group(
@@ -41,7 +41,7 @@ export class ReglagesComponent implements OnInit {
       this.formulaireMdp = this.formBuilder.group(
         {
           mdp: ['', Validators.required],
-          pseudo: this.pseudo
+          id: this.id
         }
       );
       this.formulaireMail = this.formBuilder.group(

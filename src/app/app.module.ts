@@ -25,6 +25,7 @@ import { ReussiComponent } from './reussi/reussi.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import { ReglagesComponent } from './reglages/reglages.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ReglagesComponent } from './reglages/reglages.component';
     NgbModule,
     MatFileUploadModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxPaginationModule
     
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],

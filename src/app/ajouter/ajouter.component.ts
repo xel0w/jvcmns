@@ -48,11 +48,12 @@ export class AjouterComponent implements OnInit {
       
 
       this.client
-      .post('http://localhost/test_json/article.php',this.formulaireArticle.value)
+      .post('http://php-jvcmns.test/article.php',this.formulaireArticle.value)
       .subscribe(resultat => console.log(resultat));
 
     }
   }
+
 
 
 }

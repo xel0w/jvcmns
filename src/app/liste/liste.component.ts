@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { Validators,FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-liste',
@@ -8,6 +9,7 @@ import { Validators,FormBuilder } from '@angular/forms';
   styleUrls: ['./liste.component.scss']
 })
 export class ListeComponent implements OnInit {
+  pages: number = 1;
   public currentRate=0;
   public liste: any = [];
   public listeSearch: any;

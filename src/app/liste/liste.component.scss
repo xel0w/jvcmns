@@ -1,11 +1,4 @@
-.listeCard {
-  width: 100%;
-  margin-top: 1%;
-  padding-left: 10%;
-  padding-right: 10%;
-  display: flex;
-  flex-wrap: wrap;
-  border: none;
+.liste{
   background-image: linear-gradient(
     to right bottom,
     #b9b9b9,
@@ -14,13 +7,29 @@
     #e9e4ec,
     #fbf2fd
   );
+  min-height: 92%;
+}
+.listeCard {
+  width: 100%;
+  margin-top: 1%;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+ 
 
   .example-card {
     width: 12vw;
     padding: 1%;
     margin: 2%;
     border: solid 2px orangered;
-    background-color: antiquewhite;
+    background-image: url(../../assets/img/spaceback.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    mat-card-title{
+      color: orangered
+    }
   }
   .image {
     width: 100%;
@@ -91,5 +100,15 @@
         }
       }
     }
+  }
+
+}
+  .pagination{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    pagination-controls{
+    color:orangered;
   }
 }
