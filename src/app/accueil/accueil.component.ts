@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-accueil',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor() { }
+  public liste: any = [];
+
+  constructor(
+    private client: HttpClient,
+  ) { }
 
   ngOnInit(): void {
+    this.client.get("http://php-jvcmns.test/lastAjout.php")
+    .subscribe(listeJeux =>{this.liste = listeJeux;console.log(this.liste)} ) 
+    ;
   }
 
 }

@@ -1,5 +1,46 @@
 <div class="accueil">
+    <div class="left">
+        <img src="../../assets/img/cloud.png" alt="cloud" id="cloud">
+        <img src="../../assets/img/rocket.png" alt="rocketleague" id="rocket">
+    </div>
+    <div class="right">
+        <img src="../../assets/img/sora.png" alt="sora" id="sora">
+        <img src="../../assets/img/pikachu.png" alt="pikachu" id="pikachu">
+    </div>
     <div class="hero">
         <img src="../../assets/img/header.png" alt="">
     </div>
-</div>
+    <h1>LE SITE DE NOTATION DE JEUX VIDEO OFFICIEL</h1>
+    <div class="lastAdd">
+        <h2>Denier ajout</h2>
+        <mat-card class="example-card" *ngFor="let jeux of liste">
+            <mat-card-header>
+              <mat-card-title *ngIf="jeux.jeuxTitre.length > 30"
+                >{{ jeux.jeuxTitre[0].toUpperCase()+jeux.jeuxTitre.slice(1).substring(0, 30) }}...</mat-card-title
+              >
+              <mat-card-title *ngIf="jeux.jeuxTitre.length < 30">{{
+                jeux.jeuxTitre[0].toUpperCase()+jeux.jeuxTitre.slice(1)
+              }}</mat-card-title>
+              <mat-card-subtitle>{{ jeux.jeuxGenre }}</mat-card-subtitle>
+              <mat-card-subtitle>{{ jeux.jeuxEditeur }}</mat-card-subtitle>
+            </mat-card-header>
+            <div class="image">
+              <img
+                mat-card-image
+                src="http://php-jvcmns.test/uploads/jeux/{{ jeux.jeuxPhoto }}"
+                alt="Photo of game"
+              />
+            </div>
+            <mat-card-content>
+              <ngb-rating [max]="5" [(rate)]="jeux.jeuxNote" [readonly]="true">
+                <ng-template let-fill="fill">
+                  <div [class.filled]="fill === 100" [class.notfilled]="fill === 0">
+                    <mat-icon>sports_esports</mat-icon>
+                  </div>
+                </ng-template>
+              </ngb-rating>
+              <br />La note moyenne est : {{ jeux.jeuxNote }}/5
+            </mat-card-content>
+          </mat-card>
+        </div>
+    </div>

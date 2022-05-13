@@ -24,7 +24,8 @@ a {
   }
 }
 header {
-  height: 6vh;
+  height: 5vh;
+  min-height: 40px;
   width: 100%;
   background-color: black;
   display: flex;

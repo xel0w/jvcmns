@@ -1,21 +1,22 @@
 <div class="pageperso">
   <header>
-    <div class="banniere">
-      <img src="../../assets/img/header.png" alt="" />
-    </div>
     <div class="photoprofil">
       <img
         *ngIf="profilPicture"
-        src="http://php-jvcmns.test/uploads/{{ profilPicture }}.jpg"
+        src="http://php-jvcmns.test/uploads/{{ profilPicture }}"
       />
       <img
         *ngIf="profilPicture == null"
         src="http://php-jvcmns.test/uploads/default.jpg"
       />
+      <button class="btn" (click)="open(content)" id="addpicture">
+        <mat-icon>photo_camera</mat-icon>
+      </button>
     </div>
-    <div class="pseudo">
+    <span class="pseudo">
       {{ pseudo }}
-    </div>
+    </span>
+
     <ng-template #content let-modal>
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Photo de profil</h4>
@@ -27,14 +28,10 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formulaireEnvoi" (ngSubmit)="onSubmit()">
+        <form>
           <div class="mb-3">
             <div class="input-group">
-              <input
-                id="profil"
-                type="file"
-                (change)="onSelectedFile($event)"
-              />
+              <input id="profil" type="file" (change)="fileChange($event)" />
             </div>
           </div>
 
@@ -42,25 +39,83 @@
             <button
               type="submit"
               class="btn btn-outline-dark"
-              (click)="modal.close('Save click')"
+              (click)="uploadFile()"
             >
-              Save
+              Enregistrer
             </button>
           </div>
         </form>
       </div>
     </ng-template>
-
-    <button class="btn" (click)="open(content)" id="addpicture">
-      <mat-icon>photo_camera</mat-icon>
-    </button>
+    <div class="option">
+      <a [routerLink]="['/reglages']"
+        ><button mat-button id="settings">
+          <mat-icon> settings </mat-icon>
+        </button></a
+      >
+    </div>
   </header>
-  <div class="option">
-    <a [routerLink]="['/reglages']" ><button mat-button id="settings"><mat-icon> settings </mat-icon></button></a>
-  </div>
+
   <div class="ajouter">
     <button [routerLink]="['/ajouter']" mat-fab color="primary">
-      <mat-icon>sports_esports</mat-icon><span>Ajouter un jeu</span><mat-icon>sports_esports</mat-icon>
+      <mat-icon>sports_esports</mat-icon><span>Ajouter un jeu</span
+      ><mat-icon>sports_esports</mat-icon>
     </button>
+  </div>
+  <div class="jeuxAjout">
+    <div class="listeCard">
+      <mat-card
+        class="example-card"
+        *ngFor="
+          let jeux of liste | paginate: { itemsPerPage: 4, currentPage: pages }
+        "
+      >
+        <mat-card-header>
+          <mat-card-title *ngIf="jeux.jeuxTitre.length > 30"
+            >{{ jeux.jeuxTitre[0].toUpperCase()+jeux.jeuxTitre.slice(1).substring(0, 30) }}...</mat-card-title
+          >
+          <mat-card-title *ngIf="jeux.jeuxTitre.length < 30">{{
+            jeux.jeuxTitre[0].toUpperCase()+jeux.jeuxTitre.slice(1)
+          }}</mat-card-title>
+          <mat-card-subtitle>{{ jeux.jeuxGenre }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ jeux.jeuxEditeur }}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="image">
+          <img
+            mat-card-image
+            src="http://php-jvcmns.test/uploads/jeux/{{ jeux.jeuxPhoto }}"
+            alt="Photo of game"
+          />
+        </div>
+        <mat-card-content>
+          <ngb-rating [max]="5" [(rate)]="jeux.jeuxNote" [readonly]="true">
+            <ng-template let-fill="fill">
+              <div [class.filled]="fill === 100" [class.notfilled]="fill === 0">
+                <mat-icon>sports_esports</mat-icon>
+              </div>
+            </ng-template>
+          </ngb-rating>
+          <br />La note moyenne est : {{ jeux.jeuxNote }}/5
+        </mat-card-content>
+        <mat-card-content *ngIf="token != null">
+          <p>Votre note:</p>
+          <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false">
+            <ng-template let-fill="fill">
+              <div [class.filled]="fill === 100" [class.notfilled]="fill === 0">
+                <mat-icon>sports_esports</mat-icon>
+              </div>
+            </ng-template>
+          </ngb-rating>
+        </mat-card-content>
+        <mat-card-actions> </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div class="pagination" *ngIf="liste.length > 4">
+    <pagination-controls
+      previousLabel="Prec"
+      nextLabel="Suiv"
+      (pageChange)="pages = $event"
+    ></pagination-controls>
   </div>
 </div>

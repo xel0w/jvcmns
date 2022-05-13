@@ -44,13 +44,14 @@
     </p>
     <p>
       <mat-form-field appearance="standard">
-        <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
+        <mat-label>Editeur</mat-label>
+        <input matInput formControlName="editeur"/>
       </mat-form-field>
     </p>
     <br>
     <div id="rating">
       <ngb-rating
+      formControlName="note"
         [max]="5"
         [(rate)]="currentRate"
         [readonly]="false"
@@ -67,13 +68,12 @@
 <br>
     <p>
     <label for="singleFile">Image:</label><br>
-    <input id="singleFile" type="file"/>
+    <input id="singleFile" type="file" formControlName="photo" (change)="fileChange($event)"/>
   
     </p>
 
     <p>
         <button type="submit">Ajouter</button>
     </p>
-    
   </form>
 </div>

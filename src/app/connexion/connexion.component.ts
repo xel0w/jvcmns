@@ -36,12 +36,12 @@ export class ConnexionComponent implements OnInit {
         )
         .subscribe((resultat: any) => {
           localStorage.setItem('token', resultat.token);
+          if (localStorage.getItem('token')) {
+            window.location.replace('/page-perso');
+          } else {
+            alert('Mauvais pseudo / Mot de passe');
+          }
         });
-      if (localStorage.getItem('token')) {
-        window.location.replace('/page-perso');
-      } else {
-        alert('Mauvais pseudo / Mot de passe');
-      }
     }
   }
 }
