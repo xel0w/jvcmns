@@ -16,6 +16,7 @@
     <span class="pseudo">
       {{ pseudo }}
     </span>
+    <span *ngIf="admin == 1" class="pseudo" id="admin">(Admin)</span>
 
     <ng-template #content let-modal>
       <div class="modal-header">
@@ -62,7 +63,7 @@
       ><mat-icon>sports_esports</mat-icon>
     </button>
   </div>
-  <div class="jeuxAjout">
+
     <div class="listeCard">
       <mat-card
         class="example-card"
@@ -95,19 +96,40 @@
               </div>
             </ng-template>
           </ngb-rating>
-          <br />La note moyenne est : {{ jeux.jeuxNote }}/5
+          <br />Votre note est de: {{ jeux.jeuxNote }}/5
         </mat-card-content>
-        <mat-card-content *ngIf="token != null">
-          <p>Votre note:</p>
-          <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false">
-            <ng-template let-fill="fill">
-              <div [class.filled]="fill === 100" [class.notfilled]="fill === 0">
-                <mat-icon>sports_esports</mat-icon>
+        <div class="boutton1">
+          <button class="btn" (click)="open(content1)" id="delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <ng-template #content1 let-modal>
+          <form #j="ngForm" (ngSubmit)="onDelete(j)">
+            <mat-card-content>
+              <div class="modal-body">
+                <input
+                  type="hidden"
+                  name="currentJeux"
+                  ngModel="{{ jeux.jeuxId }}"
+                />
+                <button
+                  type="button"
+                  class="btn-close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                ></button>
+  
+                <div class="mb-3">
+                  <p>Voulez vous vraiment supprimer?</p>
+                  <button type="submit">oui</button>
+                  <button type="button" (click)="modal.dismiss('Cross click')">
+                    non
+                  </button>
+                </div>
               </div>
-            </ng-template>
-          </ngb-rating>
-        </mat-card-content>
-        <mat-card-actions> </mat-card-actions>
+            </mat-card-content>
+          </form>
+        </ng-template>
       </mat-card>
     </div>
   </div>
@@ -118,4 +140,3 @@
       (pageChange)="pages = $event"
     ></pagination-controls>
   </div>
-</div>

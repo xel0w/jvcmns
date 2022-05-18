@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -18,9 +18,11 @@ export class PagePersoComponent implements OnInit {
   public selectedFile: any;
   public formulaireEnvoi: any;
   public formulaireEnvoiPerso: any;
+  public formulaireDelete:any;
   pages: number = 1;
   public currentRate=0;
   public liste: any = [];
+  public admin: any;
 
   constructor(
     private modalService: NgbModal,
@@ -76,6 +78,23 @@ export class PagePersoComponent implements OnInit {
 
           });
   }
+  onDelete(j: NgForm): void{
+    this.formulaireDelete={
+      jeuxId: j.value.currentJeux
+    }
+    const optionRequete = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    console.log(this.formulaireDelete);
+    this.client
+    .post('http://php-jvcmns.test/deleteJeux.php',this.formulaireDelete, optionRequete)
+    .subscribe()
+    window.location.replace('/page-perso');
+
+
+  }
 
   ngOnInit(): void {
     const token = this.token;
@@ -85,6 +104,7 @@ export class PagePersoComponent implements OnInit {
         utilisateur.usersPseudo[0].toUpperCase() +
         utilisateur.usersPseudo.slice(1);
       this.id = utilisateur.usersId;
+      this.admin = utilisateur.usersAdmin;
       this.profilPicture = utilisateur.usersProfilPicture;
     }else{
       window.location.replace('/connexion')

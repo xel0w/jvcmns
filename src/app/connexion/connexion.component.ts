@@ -25,7 +25,7 @@ export class ConnexionComponent implements OnInit {
       const optionRequete = {
         headers: new HttpHeaders({
           'Access-Control-Allow-Origin': '*',
-        }),
+        })
       };
 
       this.client
@@ -35,11 +35,13 @@ export class ConnexionComponent implements OnInit {
           optionRequete
         )
         .subscribe((resultat: any) => {
-          localStorage.setItem('token', resultat.token);
-          if (localStorage.getItem('token')) {
+          if(resultat.token){
+            localStorage.setItem('token', resultat.token);
             window.location.replace('/page-perso');
-          } else {
-            alert('Mauvais pseudo / Mot de passe');
+
+          }else{
+
+            alert(resultat.erreur)
           }
         });
     }

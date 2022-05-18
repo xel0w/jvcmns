@@ -9,18 +9,25 @@
   );
   min-height: 92%;
 }
+
 .listeCard {
-  width: 100%;
+  width: 100vw;
   margin-top: 1%;
   padding-left: 10%;
   padding-right: 10%;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   border: none;
  
 
   .example-card {
-    width: 12vw;
+    width: 13vw;
+    min-width:250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 1%;
     margin: 2%;
     border: solid 2px orangered;
@@ -115,4 +122,39 @@
 small{
   font-size: 12px;
   color: orangered;
+}
+.filled {
+  color: orangered;
+}
+
+.notfilled {
+  color: #6e6a6a;
+  width: 100%;
+}
+#rating {
+  display: flex;
+  justify-content: space-around;
+}
+.boutton{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+#addnote{
+  background-color: orangered;
+  width: 60%;
+  &:hover{
+    background-color: white;
+  }
+}
+.boutton1{
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  #delete{
+    &:hover{
+      background-color: orangered;
+    }
+  }
 }
